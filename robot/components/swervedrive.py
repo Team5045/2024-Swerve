@@ -4,11 +4,11 @@ import math
 
 class SwerveDrive:
 
-    def __init__(self, FR, FL, BR, BL):
+    def __init__(self, FR, FL, RR, RL):
         self.frontRightModule = FR
         self.frontLeftModule = FL
-        self.rearRightModule = BR
-        self.rearLeftModule = BL
+        self.rearRightModule = RR
+        self.rearLeftModule = RL
 
         self.modules = {
             "front_right": self.frontRightModule,
@@ -94,20 +94,16 @@ class SwerveDrive:
 
         # Speed for quadrants
         frontLeft_speed = math.hypot(frontX, rightY)
-        frontLeft_angle = 0
         frontLeft_angle = math.degrees(math.atan2(frontX, rightY))
         
         frontRight_speed = math.hypot(frontX, leftY)
-        frontRight_angle = 0
         frontRight_angle = math.degrees(math.atan2(frontX, leftY))
       
         rearLeft_speed = math.hypot(rearX, rightY)
-        rearLeft_angle = 0
         rearLeft_angle = math.degrees(math.atan2(rearX, rightY))
         
         rearRight_speed = math.hypot(rearX, leftY)
-        rearRight_angle = 0
-        rearRight_angle = math.degrees(math.atan2(rearX, leftY)) 
+        rearRight_angle = math.degrees(math.atan2(rearX, leftY))
 
         self.requested_speeds['front_left'] = frontLeft_speed
         self.requested_speeds['front_right'] = frontRight_speed

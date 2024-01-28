@@ -29,9 +29,9 @@ class SwerveModule:
 
         self.requested_speed = 0
 
-        self.pid_controller = PIDController(0.0005, 0.0, 0.0)
+        self.pid_controller = PIDController(0.00055, 0.0, 0.0)
         self.pid_controller.enableContinuousInput(0.0, 4096.0)
-        self.pid_controller.setTolerance(5, 5)
+        self.pid_controller.setTolerance(3, 3)
         
     def get_encoder_ticks(self):
         return self.encoder.getSelectedSensorPosition()
@@ -45,7 +45,8 @@ class SwerveModule:
     def ticks_to_degrees(ticks):
         isNegative = ticks < 0
         deg = (abs(ticks) % ENCODER_SIZE)/ENCODER_SIZE
-        if isNegative: deg *= -1
+        if isNegative:
+            deg *= -1
         deg *= 360
         return deg
 
